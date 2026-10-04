@@ -1,87 +1,119 @@
-# Cipher Toolkit — Simple Encryption Web App
+# 🔐 Cipher Toolkit
 
-A small Flask web app that demonstrates text encryption and decryption using two classic educational ciphers:
+A simple Flask web app that encrypts and decrypts text using two classic ciphers. Pick a cipher, choose an action, and see the result in your browser.
 
-- Monoalphabetic substitution cipher (preserves case)
-- Caesar cipher (rotational shift, shift 1–25)
+> ⚠️ Built for learning and demonstration only. Classical ciphers are **not** secure for real-world use.
 
-This project is intended for learning and demonstration purposes only.
+<img width="1919" height="975" alt="Cipher Toolkit screenshot" src="https://github.com/user-attachments/assets/3f511501-704d-491d-97f3-7ac63d5b98b7" />
 
-## App screenshot
+## ✨ Features
 
-<img width="1919" height="975" alt="Screenshot 2025-10-22 010233" src="https://github.com/user-attachments/assets/3f511501-704d-491d-97f3-7ac63d5b98b7" />
+- **Two Classic Ciphers**:
+  - Monoalphabetic substitution cipher (preserves letter case)
+  - Caesar cipher (rotational shift from 1 to 25)
+- **Encrypt or Decrypt**: Choose the action with one selection
+- **Custom Caesar Shift**: Set any shift value between 1 and 25
+- **Case and Symbol Preservation**: Uppercase and lowercase letters stay as they are, and non-letter characters are left unchanged
+- **Local Web Interface**: Runs in your browser, nothing is sent to an outside server
 
+## 📋 Requirements
 
-
-## Features
-- Encrypt and decrypt text with Monoalphabetic or Caesar ciphers
-- Select cipher and action (Encrypt / Decrypt)
-- Specify Caesar shift (1–25)
-- Simple, local web interface — runs in your browser
-
-## Requirements
-- Python 3.8+
+- Python 3.8 or newer
 - pip
+- Flask (installed from `requirements.txt`)
 
-## Installation
+## 🚀 Installation & Usage
 
-Clone the repo:
-```bash
-git clone https://github.com/abdelazizounissi/encryption-decryption_app.git
-cd encryption-decryption_app
+1. Clone this repository:
+   ```bash
+   git clone https://github.com/abdelazizounissi/Cipher_Toolkit.git
+   cd Cipher_Toolkit
+   ```
+
+2. Create and activate a virtual environment:
+
+   **Windows (PowerShell):**
+   ```powershell
+   python -m venv venv
+   venv\Scripts\Activate.ps1
+   ```
+
+   **macOS / Linux:**
+   ```bash
+   python -m venv venv
+   source venv/bin/activate
+   ```
+
+3. Install the dependencies:
+   ```bash
+   pip install -r requirements.txt
+   ```
+
+4. Run the app:
+   ```bash
+   python app.py
+   ```
+
+5. Open your browser and go to:
+   ```
+   http://127.0.0.1:5000
+   ```
+
+## 🎯 How to Use
+
+1. **Enter Text**: Type or paste the text you want to process
+2. **Choose a Cipher**: Monoalphabetic or Caesar
+3. **Choose an Action**: Encrypt or Decrypt
+4. **Set the Shift** (Caesar only): Enter a value from 1 to 25
+5. **Run**: Click **Run Cipher** to see the result
+
+## ⚙️ How It Works
+
+- **Server**: Flask receives the form submission (POST) and runs the chosen cipher on the server side
+- **Monoalphabetic**: Each letter is replaced using a fixed substitution mapping. Letter case is preserved and non-letter characters are kept as they are
+- **Caesar**: Each letter is shifted by the chosen amount. Case and non-letter characters are preserved
+
+## 📁 Project Structure
+
+```
+Cipher_Toolkit/
+├── app.py              Flask app and cipher logic
+├── templates/          HTML templates
+├── requirements.txt    Dependencies
+├── LICENSE
+└── README.md
 ```
 
-Create and activate a virtual environment:
+## 🔒 Security Note
 
-- macOS / Linux:
-```bash
-python -m venv venv
-source venv/bin/activate
-```
+Monoalphabetic and Caesar ciphers are **not secure** for real-world use. They can be broken in seconds and exist here for teaching and demonstration only.
 
-- Windows (PowerShell):
-```powershell
-python -m venv venv
-venv\Scripts\Activate.ps1
-```
+For real confidentiality needs, use a well-maintained cryptographic library, for example the `cryptography` package with AES-GCM. Never commit private keys or secrets to a repository.
 
-Install dependencies:
-```bash
-pip install -r requirements.txt
-```
+## 🗺️ Future Improvements
 
-## Running the app
-```bash
-python app.py
-```
-Open your browser to: http://127.0.0.1:5000
+- [ ] Add automated tests (pytest)
+- [ ] Add stronger input validation
+- [ ] Add CSRF protection (Flask-WTF)
+- [ ] Add rate limiting before any public deployment
+- [ ] Add more ciphers (for example Vigenère)
 
-## How to Use
-1. Enter the input text.
-2. Choose a cipher (Monoalphabetic or Caesar).
-3. Choose action: Encrypt or Decrypt.
-4. If Caesar, enter a shift value (1–25).
-5. Click "Run Cipher" to see the result.
+## 📝 License
 
-## Important security note
-Monoalphabetic and Caesar ciphers are NOT secure for real-world use. They are classical ciphers used for teaching and demonstration only. For any real confidentiality needs, use well-maintained cryptographic libraries (for example, the `cryptography` package with AES-GCM or an asymmetric scheme backed by a key management system). Do not store or commit private keys or secrets in the repository.
+This project is open source and available under the [MIT License](LICENSE).
 
-## How it works (brief)
-- Server: Flask receives the form POST and runs the chosen cipher implementation on the server side.
-- Monoalphabetic: substitution mapping preserves letter case; non-letter characters are preserved.
-- Caesar: each letter is shifted by the chosen amount; preserves case and non-letter characters.
+## 👤 Author
 
-## Development notes
-- Add tests under `tests/` (pytest recommended).
-- Consider adding input validation, CSRF protection (Flask-WTF), and escaping/sanitization of user input when rendering results to avoid XSS.
-- Use POST for form submissions and add rate limiting for public deployments.
+Abdelaziz Ounissi
 
-## Contributing
-Contributions welcome! Please open an issue or a pull request. Add tests for any new functionality and follow the project linting.
+[LinkedIn](https://www.linkedin.com/in/abdelaziz-ounissi/) | [GitHub](https://github.com/abdelazizounissi)
 
-## Screenshot
-- The file `screenshot.png` is referenced above. If you include the screenshot file in the repo root, it will be shown here on GitHub.
-- Optional: crop/remove any UI overlay (e.g., full-screen hints) before committing for a cleaner image.
+© 2025 Abdelaziz Ounissi
 
-## License
-This project is open-source. Add a LICENSE file (e.g., MIT) to make the license explicit.
+## 🤝 Contributing
+
+Feel free to fork this project and submit pull requests for any improvements!
+
+## 📧 Support
+
+If you encounter any issues or have suggestions, please open an issue on GitHub.
